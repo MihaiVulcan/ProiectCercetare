@@ -4,7 +4,7 @@ import time
 
 def worker(num):
     """thread worker function"""
-    for i in range(100):
+    for i in range(50):
         r = requests.get('http://52.91.205.75')
         #print('Worker: ', num, ' code:', r.status_code)
     return

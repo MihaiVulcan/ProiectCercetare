@@ -4,7 +4,7 @@ app = flask.Flask(__name__)
 
 @app.route("/")
 def starting_url():
-	time.sleep(0.1)
+	time.sleep(1)
 	status_code = flask.Response(status=201)
 	return status_code
 
