@@ -8,4 +8,4 @@ def starting_url():
 	status_code = flask.Response(status=201)
 	return status_code
 
-app.run(host="0.0.0.0", port=8080)
+app.run(host="0.0.0.0", port=8080, threaded=False)
