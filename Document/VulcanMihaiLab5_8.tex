@@ -1,0 +1,34 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+\title{Load Balancing Algorithms on AWS Cloud\\}
+
+\author{\IEEEauthorblockN{1\textsuperscript{st} Vulcan Mihai-Aron}}
+
+\maketitle
+
+\section{Proposed experiment}
+The experiment is suposed to test different balancing algorithms in an cloud system that is used in production.
+Apart from that the results should be compared with results of the same algorithm obtained in cloud simulations system to detemine if the ranking of the algorithms is kept in this enviourment.
+\\The experiment consists of multiple steps:
+\\1.Deploying an EC2 instance that takes care of the load blancing using NGINX.
+\\2.Deploying multiple EC2 instances that will run a simple python program that waits a HTTP request, simulates processing of some data and returns and HTTP response with code 201.
+\\3.Adding the worker server ip's to the load blancing configuration.
+\\4.Executing an multi-thread python application that creates multiple HTTP request to the load balancing server and measures the time needed for this requests.
+
+\subsection{Mathematic model of the experiments}
+
+\subsection{Original }
+
+
+\end{document}
