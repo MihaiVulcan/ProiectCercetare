@@ -1,0 +1,5 @@
+sudo yum -y update
+sudo yum install git -y
+pip install Flask
+git clone https://github.com/MihaiVulcan/ProiectCercetare.git
+./scripts/runApp.sh
