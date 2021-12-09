@@ -8,27 +8,48 @@
 \usepackage{textcomp}
 \usepackage{xcolor}
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
-    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\newcommand\tab[1][.3cm]{\hspace*{#1}}
 \begin{document}
 
-\title{Load Balancing Algorithms on AWS Cloud\\}
+\title{Benchmarking Load Balancing Algorithms on AWS Cloud\\}
 
 \author{\IEEEauthorblockN{1\textsuperscript{st} Vulcan Mihai-Aron}}
 
 \maketitle
 
+\section{Introduction}
+During the evolution of cloud computing the necessity of using more resources has grown and the importance of distributing the load between the resources in the most efficient manner has grown with it. To solve the problem of distributing the task in this type of environment, but with multiple solution the question that is raised is how should this solutions be tested and ranked to assure that the best solution is used in each specific situation? There are to main ways to go about comparing this solutions: one is based on analysis the properties of each algorithm and making surveys and one is based on benchmarking algorithms. The second solution also divides in two categorize based on which type on systems the benchmarking takes places: simulated systems and real systems. In this paper I propose benchmark solution of HTTP load balancing algorithms on the AWS environment. 
+
+\section{Related Work}
+In [1] is presented an extensive analization of load blancing algorithms used on different application layers or in different domains of cloud computing. This analyzation splits the algorithms in multiple categorize based on the domain in which the algorithm works best such as application oriented algorithms, Natural phenomena-based algorithms. For each of this categories there are presented the key idea behind it and some advantages and disadvantages .Also this article presents other problems connected to this topic such as electric energy used for distributing tasks.  
+\\ \tab In [2] is presented an task scheduler using improved ACO and in section IV is described thier method of testing using JAVA based cloud simulator CloudSim, especialy the Cloud Analyst feature. 
+\\ \tab In [3], apart from presenting an genetic algorithm used for load balancing in Cloud Enviourments, an extensive benchmarking between algorithms is presented, altough no information regarding on how the test is done is presented.
+
 \section{Proposed experiment}
-The experiment is suposed to test different balancing algorithms in an cloud system that is used in production.
-Apart from that the results should be compared with results of the same algorithm obtained in cloud simulations system to detemine if the ranking of the algorithms is kept in this enviourment.
+The experiment is supposed to test different balancing algorithms in an cloud system that is used in production.
+Apart from that the results should be compared with results of the same algorithm obtained in cloud simulations system to determine if the ranking of the algorithms is kept in this environment.
 \\The experiment consists of multiple steps:
-\\1.Deploying an EC2 instance that takes care of the load blancing using NGINX.
-\\2.Deploying multiple EC2 instances that will run a simple python program that waits a HTTP request, simulates processing of some data and returns and HTTP response with code 201.
-\\3.Adding the worker server ip's to the load blancing configuration.
+\\1.Deploying an EC2 instance that takes care of the load balancing using NGINX.
+\\2.Deploying multiple EC2 instances that will run a simple python program that waits an HTTP request, simulates processing of some data and returns and HTTP response with code 201.
+\\3.Adding the worker server ip's to the load balancing configuration.
 \\4.Executing an multi-thread python application that creates multiple HTTP request to the load balancing server and measures the time needed for this requests.
 
 \subsection{Mathematic model of the experiments}
+Let there be $S_{lb}$ a cloud the server that runs the load balancer and $S_{1,2...n}$ n cloud servers that run the application.
+\\ \tab The application on the servers simulate the execution of an request. The time that takes to execute the process is equal to the random variable x, where x follows a standard normal distribution with mean value of $M$ and an standard deviation of $S$.
+\\ \tab The $S_{lb}$ accepts HTTP requests and routes them to the $S_{1,2...n}$ servers.
+\\ \tab On the local computer an application that sends HTTP requests to the load balancer is run. The application starts $P$ threads that send a total of $N$ requests. The total time of the execution, $T_{total}$ is the time between the start the first thread and the end of all threads. The average necessary for a request, $T_{avg}$ is defined as:
 
-\subsection{Original }
+\[ T_{avg} = T_{total} / N \]
 
+\subsection{Original}
+The original aspect of this proposing on comparing load balancing algorithms is that is proposing to test this algorithms in real environments and also takes into account the necessary execution time of the algorithms. This type of testing may also be used, knowing an application process time for a specific request, before choosing one of those algorithms in an production system.
+\begin{thebibliography}{00}
+\bibitem{b1} Einollah Jafarnejad Ghomia, Amir Masoud Rahmania, Nooruldeen Nasih Qaderb, “Load-balancing algorithms in cloud computing: A survey”, Journal of Network and Computer Applications 88 (2017) 50–71
+\bibitem{b2} Sushmita Barsainya, Anshul Khurana, “Task Schduling With Improved ACO In Cloud Computing”, International Journal of Computer Sciences and Engineering, Vol.-7, Special Issue-10, May 2019
+\bibitem{b3} Md. Shahjahan Kabir, Kh. Mohaimenul Kabir, Dr. Rabiul Islam, “Process Of Load Balancing In Ccloud Computing Using Genetic Algorithm”, Electrical and Computer Engineering: An International Journal (ECIJ) Volume 4, Number 2, June 2015
+\end{thebibliography}
 
 \end{document}
+
