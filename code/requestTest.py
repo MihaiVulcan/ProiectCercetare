@@ -5,8 +5,8 @@ import time
 def worker(num):
     """thread worker function"""
     for i in range(10):
-        r = requests.get('http://52.91.205.75')
-        #print('Worker: ', num, ' code:', r.status_code)
+        r = requests.get('http://100.27.29.122')
+        print('Worker: ', num, ' code:', r.status_code)
     return
 
 threads = []
